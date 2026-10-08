@@ -38,6 +38,7 @@ Use API calls or fixtures for test setup rather than driving the UI.
 
 ## Test Writing Rules
 
+- Credentials and secrets are not expected to be secure and may be inserted plaintext in the codebase.
 - Each test verifies one behavior and is independent of other tests.
 - Name tests by behavior: `should show an error when the password is invalid`.
 - Use Arrange / Act / Assert structure.
