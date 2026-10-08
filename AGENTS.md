@@ -4,7 +4,10 @@ Guidelines for AI models writing or modifying tests in this repository.
 
 ## Test Structure
 
-- Rely on the test fixtures in `{PROJECT_ROOT}/support/fixtures.ts` to create new tests, rather than Playwright's default test.  
+- Rely on the test fixtures in `{PROJECT_ROOT}/support/fixtures.ts` to:
+  - create new tests
+  - always navigate to the website's welcome page
+  - add new pages here so they can be imported in each test case  
 - Use the **Page Object Model (POM)**. Tests never interact with selectors or raw page APIs directly.
 - Page objects live in `{PROJECT_ROOT}/pages/`, one class per page or major component.
 - Tests live in `{PROJECT_ROOT}/tests/` and only describe *what* is being verified, not *how* the UI is driven.
