@@ -7,7 +7,7 @@ type Options = {
 };
 
 export const test = base.extend<Options>({
-  startUrl: ['http://training-frontend-angular.s3-website-eu-west-1.amazonaws.com/', { option: true }],
+  startUrl: ['/', { option: true }],
 
   page: async ({ page, startUrl }, use) => {
     await page.goto(startUrl);
