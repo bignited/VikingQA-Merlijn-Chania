@@ -1,4 +1,5 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
+import { YouTubeVideoPage } from './pages/YouTubeVideoPage';
 
 test.describe('A user navigates to Rick Astley – Never Gonna Give You Up on YouTube', {
   tag: '@case',
@@ -10,18 +11,18 @@ test.describe('A user navigates to Rick Astley – Never Gonna Give You Up on Yo
   test.describe.configure({ mode: 'serial' });
 
   test('opens the YouTube video page', async ({ page }) => {
+    const videoPage = new YouTubeVideoPage(page);
+
     await test.step('Navigate to the video', async () => {
-      await page.goto('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+      await videoPage.navigate();
     });
 
     await test.step('Verify the page title contains the song name', async () => {
-      await expect(page).toHaveTitle(/Never Gonna Give You Up/i);
+      await videoPage.assertTitleContainsSongName();
     });
 
     await test.step('Verify the video heading is visible on the page', async () => {
-      await expect(
-        page.locator('h1').filter({ hasText: /Never Gonna Give You Up/i }).first(),
-      ).toBeVisible();
+      await videoPage.assertVideoHeadingIsVisible();
     });
   });
 });
